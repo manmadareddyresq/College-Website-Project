@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty & People - UCMH</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <section class="pt-20 section">
+    <div class="container fade-in">
+      <div id="breadcrumb-container" class="mb-4"></div>
+      
+      <div class="text-center mb-10">
+        <h1>Our Faculty</h1>
+        <p style="max-width: 600px; margin: 0 auto;">Learn from distinguished professors and industry experts dedicated to your academic and professional growth.</p>
+      </div>
+      
+      <div id="faculty-grid" class="grid-3">
+        <!-- Faculty dynamically loaded by main.js -->
+        <div class="skeleton" style="height: 250px;"></div>
+        <div class="skeleton" style="height: 250px;"></div>
+        <div class="skeleton" style="height: 250px;"></div>
+      </div>
+      
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('breadcrumb-container').innerHTML = 
+        window.Components.generateBreadcrumbs([
+          {name: 'Home', url: '/index.html'}, 
+          {name: 'Faculty', url: '#'}
+        ]);
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

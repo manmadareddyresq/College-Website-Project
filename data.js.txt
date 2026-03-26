@@ -1,0 +1,41 @@
+// data.js - Simulates backend data
+
+const siteData = {
+  news: [
+    { id: 1, title: "Admissions Open for MBA 2024-25", date: "2024-03-20", excerpt: "Applications are now invited for the regular MBA program. Apply before the deadline.", type: "Admission" },
+    { id: 2, title: "International Conference on Management", date: "2024-04-15", excerpt: "Join us for the 3-day international conference featuring speakers from around the globe.", type: "Event" },
+    { id: 3, title: "Campus Placement Drive 2024", date: "2024-05-10", excerpt: "Top MNCs will be visiting the campus for recruitment. Register on the placement portal.", type: "Placement" },
+    { id: 4, title: "Semester Results Announced", date: "2024-03-10", excerpt: "Results for the Odd semester have been declared. Check the student portal.", type: "Academic" }
+  ],
+  events: [
+    { title: "Alumni Meet 2024", date: "15 April 2024", time: "10:00 AM", location: "Auditorium" },
+    { title: "Guest Lecture Series: Startup Ecosystem", date: "22 April 2024", time: "02:00 PM", location: "Seminar Hall" },
+    { title: "Annual Sports Meet", date: "05 May 2024", time: "09:00 AM", location: "University Ground" }
+  ],
+  courses: [
+    { id: "mba-reg", title: "MBA (Regular - ICET)", duration: "2 Years", intake: "60 Seats", desc: "Flagship management program approved by AICTE, focused on holistic business leadership.", icon: "briefcase" },
+    { id: "mba-pt", title: "MBA (Part-Time PTPG)", duration: "3 Years", intake: "45 Seats", desc: "Designed for working professionals to enhance their managerial skills.", icon: "clock" },
+    { id: "mba-cmu", title: "MBA Collaboration with CMU (USA)", duration: "2 Years", intake: "30 Seats", desc: "Dual degree program in collaboration with Central Michigan University.", icon: "globe" },
+    { id: "phd", title: "Ph.D Program", duration: "3-5 Years", intake: "Varies", desc: "Advanced research program in management pushing the boundaries of knowledge.", icon: "book" },
+    { id: "bba-reg", title: "BBA (Regular)", duration: "3 Years", intake: "60 Seats", desc: "Undergraduate degree providing a strong foundation in business principles.", icon: "user" },
+    { id: "bba-data", title: "BBA (Data Analytics)", duration: "3 Years", intake: "60 Seats", desc: "Specialized undergraduate program focusing on business intelligence and analytics.", icon: "bar-chart" }
+  ],
+  faculty: [
+    { name: "Dr. Sindhu", role: "Principal & Professor", dept: "General Management", exp: "20+ Years", img: "https://ui-avatars.com/api/?name=Dr+Sindhu&background=2563eb&color=fff&size=200" },
+    { name: "Dr. A. Prabhu", role: "Professor", dept: "Finance", exp: "18 Years", img: "https://ui-avatars.com/api/?name=A+Prabhu&background=4f46e5&color=fff&size=200" },
+    { name: "Dr. M. Lakshmi", role: "Associate Professor", dept: "Marketing", exp: "12 Years", img: "https://ui-avatars.com/api/?name=M+Lakshmi&background=059669&color=fff&size=200" },
+    { name: "Prof. K. Reddy", role: "Assistant Professor", dept: "HR", exp: "8 Years", img: "https://ui-avatars.com/api/?name=K+Reddy&background=dc2626&color=fff&size=200" },
+    { name: "Dr. S. Kumar", role: "Professor", dept: "Data Analytics", exp: "15 Years", img: "https://ui-avatars.com/api/?name=S+Kumar&background=d97706&color=fff&size=200" },
+    { name: "Prof. R. Sharma", role: "Assistant Professor", dept: "Operations", exp: "6 Years", img: "https://ui-avatars.com/api/?name=R+Sharma&background=7c3aed&color=fff&size=200" }
+  ],
+  pages: [
+    { url: "/index.html", title: "Home" },
+    { url: "/pages/about.html", title: "About Us" },
+    { url: "/pages/courses.html", title: "Courses" },
+    { url: "/pages/administration.html", title: "Administration" },
+    { url: "/pages/contact.html", title: "Contact Us" },
+    { url: "/pages/vision.html", title: "Vision & Mission" },
+    { url: "/pages/faculty.html", title: "People (Faculty)" },
+    { url: "/pages/gallery.html", title: "Photo Gallery" }
+  ]
+};

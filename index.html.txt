@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="University College of Management Hyderabad (UCMH), JNTUH. Premier management education in Hyderabad offering MBA, BBA, and Ph.D programs.">
+  <title>UCMH - University College of Management Hyderabad</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <!-- Header injected via JS -->
+  <div id="header-container"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="parallax-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="container text-center">
+      <div class="hero-content fade-in" style="margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+        <span class="tag mb-4" style="background: rgba(37, 99, 235, 0.1); color: var(--primary);">Empowering Future Leaders</span>
+        <h1 style="line-height: 1.1; margin-bottom: 1.5rem;">University College of Management Hyderabad</h1>
+        <p style="font-size: 1.25rem; font-weight: 500; margin-bottom: 2rem;">Jawaharlal Nehru Technological University Hyderabad (JNTUH), Kukatpally.</p>
+        <div class="hero-actions">
+          <a href="/pages/courses.html" class="btn btn-primary">Explore Programs</a>
+          <a href="/pages/about.html" class="btn btn-outline">Discover UCMH</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights/Stats Section -->
+  <section class="section glass" style="margin-top: -5rem; z-index: 20; position: relative; padding: 4rem 0; border-radius: 2rem 2rem 0 0; box-shadow: 0 -10px 20px rgba(0,0,0,0.05);">
+    <div class="container">
+      <div class="grid-4 text-center">
+        <div class="scale-in">
+          <h2 style="color: var(--primary); font-size: 3.5rem; margin-bottom: 0.5rem; text-shadow: var(--shadow-glow);">A+</h2>
+          <p style="font-weight: 600;">NAAC Accreditation</p>
+        </div>
+        <div class="scale-in">
+          <h2 style="color: var(--primary); font-size: 3.5rem; margin-bottom: 0.5rem; text-shadow: var(--shadow-glow);"><span class="counter" data-target="33">0</span>+</h2>
+          <p style="font-weight: 600;">Years of Excellence</p>
+        </div>
+        <div class="scale-in">
+          <h2 style="color: var(--primary); font-size: 3.5rem; margin-bottom: 0.5rem; text-shadow: var(--shadow-glow);"><span class="counter" data-target="100">0</span>%</h2>
+          <p style="font-weight: 600;">Placement Assistance</p>
+        </div>
+        <div class="scale-in">
+          <h2 style="color: var(--primary); font-size: 3.5rem; margin-bottom: 0.5rem; text-shadow: var(--shadow-glow);"><span class="counter" data-target="50">0</span>+</h2>
+          <p style="font-weight: 600;">Expert Faculty</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="align-items: center;">
+        <div class="fade-in">
+          <span class="tag mb-4">About Us</span>
+          <h2 class="mb-4">Nurturing Excellence in Management Education</h2>
+          <p>UCMH provides a vibrant environment for theoretical and applied research in management disciplines. We blend modern pedagogy, case studies, and corporate interactions to create industry-ready professionals and thought leaders.</p>
+          <ul style="margin-bottom: 2rem; list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced Infrastructure & Smart Classrooms
+            </li>
+            <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Global Academic Collaborations
+            </li>
+            <li style="display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrepreneurship & Innovation Cell
+            </li>
+          </ul>
+          <a href="/pages/about.html" class="btn btn-outline" style="border-radius:0.5rem">Read Full Story <span>&rarr;</span></a>
+        </div>
+        <div class="img-wrap fade-in" style="border-radius: 1.5rem; box-shadow: var(--shadow-lg);">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800" alt="Students collaborating">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Updates Section -->
+  <section class="section" style="background: var(--card-bg);">
+    <div class="container">
+      <div class="text-center mb-8 fade-in">
+        <span class="tag mb-2">Campus Life</span>
+        <h2 style="font-size: 3rem;">Latest Notifications</h2>
+      </div>
+      <div class="grid-2">
+        <!-- News & Updates -->
+        <div class="fade-in">
+          <h3 class="mb-4" style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">News & Updates</h3>
+          <div id="news-container" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="glass-card" style="padding: 1.5rem; min-height:100px;">
+              <div class="skeleton" style="height:20px; width:40%; margin-bottom:10px;"></div>
+              <div class="skeleton" style="height:15px; width:80%;"></div>
+            </div>
+          </div>
+          <div class="mt-4"><a href="#" class="btn btn-outline" style="width:100%;">View All News</a></div>
+        </div>
+        
+        <!-- Events & Circulars -->
+        <div class="fade-in">
+          <h3 class="mb-4" style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">Upcoming Events</h3>
+          <div id="events-container" style="display: flex; flex-direction: column; gap: 1rem;">
+            <!-- Simple Mock for Events -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; gap: 1.5rem; align-items: center;">
+              <div style="background: rgba(37,99,235,0.1); padding: 1rem; border-radius: 1rem; text-align: center; min-width: 80px;">
+                <span style="display: block; font-size: 1.5rem; font-weight: 700; color: var(--primary);">25</span>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">April</span>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 0.25rem;">International Business Conference</h4>
+                <p style="margin-bottom: 0; font-size: 0.9rem;">Main Auditorium, UCMH Campus</p>
+              </div>
+            </div>
+            <div class="glass-card" style="padding: 1.5rem; display: flex; gap: 1.5rem; align-items: center;">
+              <div style="background: rgba(37,99,235,0.1); padding: 1rem; border-radius: 1rem; text-align: center; min-width: 80px;">
+                <span style="display: block; font-size: 1.5rem; font-weight: 700; color: var(--primary);">05</span>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">May</span>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 0.25rem;">Annual Sports Meet 2024</h4>
+                <p style="margin-bottom: 0; font-size: 0.9rem;">JNTUH University Ground</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4"><a href="#" class="btn btn-outline" style="width:100%;">View Event Calendar</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container">
+      <div class="glass-card fade-in text-center" style="padding: 4rem 2rem; background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(79, 70, 229, 0.1)); border: 1px solid rgba(37, 99, 235, 0.2);">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to shape your future?</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem;">Join one of India's premier management institutes and embark on a journey of academic rigor and professional excellence.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <a href="/pages/courses.html" class="btn btn-primary" style="padding: 1rem 2rem;">Apply Now</a>
+          <a href="/pages/contact.html" class="btn btn-outline" style="padding: 1rem 2rem;">Contact Admissions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer injected via JS -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="./js/data.js"></script>
+  <script src="./js/components.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

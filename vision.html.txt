@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision & Mission - UCMH</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <!-- Hero for Vision -->
+  <section class="hero" style="min-height: 60vh; padding-top: 8rem; background: linear-gradient(135deg, rgba(37,99,235,0.05), rgba(79,70,229,0.05));">
+    <div class="container text-center fade-in">
+      <span class="tag mb-4">Core Philosophy</span>
+      <h1 class="mb-4">Our Vision & Mission</h1>
+      <p style="max-width: 600px; margin: 0 auto; font-size: 1.25rem;">Building a foundation of excellence, sustainability, and global leadership in management education.</p>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top: -4rem;">
+    <div class="container">
+      <div id="breadcrumb-container" class="mb-4"></div>
+
+      <div class="grid-2" style="gap: 4rem; align-items: stretch;">
+        
+        <!-- Vision -->
+        <div class="glass-card fade-in" style="padding: 3rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+          <div style="position: absolute; right: -2rem; top: -2rem; opacity: 0.1; color: var(--primary);">
+            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+          </div>
+          <h2 class="mb-4" style="color: var(--primary);">Our Vision</h2>
+          <p style="font-size: 1.15rem; line-height: 1.8;">To be a world-class center of management education, research, and training, acting as a catalyst for sustainable global business leadership while adhering strictly to ethical and moral values.</p>
+        </div>
+
+        <!-- Mission -->
+        <div class="glass-card fade-in" style="padding: 3rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;" style="transition-delay: 0.2s;">
+          <div style="position: absolute; right: -2rem; bottom: -2rem; opacity: 0.1; color: var(--secondary);">
+            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <h2 class="mb-4" style="color: var(--secondary);">Our Mission</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Impart cutting-edge academic curriculum aligned with industry changes.</span>
+            </li>
+            <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Promote a culture of innovation, sustainability, and entrepreneurship.</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              <span>Foster global perspectives bridging the academy and the corporate world.</span>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer injected via JS -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('breadcrumb-container').innerHTML = 
+        window.Components.generateBreadcrumbs([
+          {name: 'Home', url: '/index.html'}, 
+          {name: 'Vision & Mission', url: '#'}
+        ]);
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

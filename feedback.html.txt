@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback - UCMH</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .form-group { margin-bottom: 1.5rem; }
+    .form-control { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--bg-color); color: var(--text-main); transition: var(--transition); outline: none; }
+    .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.2); }
+  </style>
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <section class="pt-20 section">
+    <div class="container fade-in">
+      <div id="breadcrumb-container" class="mb-4"></div>
+      
+      <div class="text-center mb-8">
+        <h1>Student Feedback</h1>
+        <p>Your feedback helps us improve the academic delivery and facilities at UCMH.</p>
+      </div>
+
+      <div class="glass-card" style="max-width: 700px; margin: 0 auto; padding: 2.5rem;">
+        <form id="feedback-form">
+          <div class="form-group">
+            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Roll Number (Optional)</label>
+            <input type="text" class="form-control" name="roll_number" placeholder="e.g. 2101M0... ">
+          </div>
+          
+          <div class="form-group">
+            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Feedback Category *</label>
+            <select class="form-control" name="category" required>
+              <option value="">Select Category...</option>
+              <option value="academic">Academic / Teaching</option>
+              <option value="infrastructure">Infrastructure & Facilities</option>
+              <option value="administration">Administration</option>
+              <option value="placements">Placements</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-4">
+            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Rating</label>
+            <div style="display: flex; gap: 1rem;">
+              <label class="custom-radio"><input type="radio" name="rating" value="5" required> Excellent</label>
+              <label class="custom-radio"><input type="radio" name="rating" value="4"> Good</label>
+              <label class="custom-radio"><input type="radio" name="rating" value="3"> Average</label>
+              <label class="custom-radio"><input type="radio" name="rating" value="2"> Poor</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Detailed Feedback *</label>
+            <textarea class="form-control" name="message" rows="6" required placeholder="Please describe your experience or suggestions clearly..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Feedback</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer injected via JS -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('breadcrumb-container').innerHTML = 
+        window.Components.generateBreadcrumbs([
+          {name: 'Home', url: '/index.html'}, 
+          {name: 'Feedback', url: '#'}
+        ]);
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

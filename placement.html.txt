@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placement Cell - UCMH</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <section class="pt-20 section">
+    <div class="container fade-in">
+      <div id="breadcrumb-container" class="mb-4"></div>
+      
+      <div class="grid-2" style="align-items: center; margin-bottom: 4rem;">
+        <div>
+          <h1>Training & Placement Cell</h1>
+          <p>The UCMH Placement Cell bridges the gap between academics and corporate expectations. We organize regular training sessions, mock interviews, and workshops to ensure 100% placement readiness.</p>
+          <div style="display: flex; gap: 2rem; margin-top: 2rem;">
+            <div style="background: var(--card-bg); padding: 1rem 1.5rem; border-radius: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+              <h3 style="color: var(--primary); margin:0;">85+</h3>
+              <p style="margin:0; font-size: 0.9rem;">Recruiters</p>
+            </div>
+            <div style="background: var(--card-bg); padding: 1rem 1.5rem; border-radius: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+              <h3 style="color: var(--primary); margin:0;">₹12 LPA</h3>
+              <p style="margin:0; font-size: 0.9rem;">Highest Package</p>
+            </div>
+          </div>
+        </div>
+        <div class="img-wrap" style="border-radius: 1.5rem; box-shadow: var(--shadow-lg);">
+          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="Placement Drive">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('breadcrumb-container').innerHTML = 
+        window.Components.generateBreadcrumbs([
+          {name: 'Home', url: '/index.html'}, 
+          {name: 'Placement Cell', url: '#'}
+        ]);
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

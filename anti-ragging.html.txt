@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anti-Ragging - UCMH</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <section class="pt-20 section">
+    <div class="container fade-in">
+      <div id="breadcrumb-container" class="mb-4"></div>
+      
+      <div class="text-center mb-8">
+        <h1 style="color: #ef4444; background: none; -webkit-text-fill-color: #ef4444;">Anti-Ragging Initiative</h1>
+        <p>UCMH maintains a ZERO TOLERANCE policy towards ragging.</p>
+      </div>
+
+      <div class="glass-card" style="padding: 3rem; border-top: 4px solid #ef4444;">
+        <h3 class="mb-4">Strict Prohibition & Punishments</h3>
+        <p>Ragging is completely prohibited inside and outside the University campus. Any student found engaging in, facilitating, or encouraging ragging will face severe disciplinary action as per the honorable Supreme Court directives and UGC regulations.</p>
+        
+        <div style="background: rgba(239, 68, 68, 0.1); padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem;">
+          <h4 style="color: #ef4444; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            Helpline Numbers
+          </h4>
+          <p style="margin: 0; font-weight: 500;">National Anti-Ragging Helpline: 1800-180-5522</p>
+          <p style="margin: 0; font-weight: 500;">Campus Security (24/7): +91 40 12345678</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('breadcrumb-container').innerHTML = 
+        window.Components.generateBreadcrumbs([
+          {name: 'Home', url: '/index.html'}, 
+          {name: 'Anti-Ragging', url: '#'}
+        ]);
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

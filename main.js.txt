@@ -1,0 +1,341 @@
+// main.js - Core Logic and Interactivity
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Inject Components
+  const body = document.body;
+  
+  // Inject Loader at the start
+  body.insertAdjacentHTML('afterbegin', window.Components.loader);
+  
+  const headerContainer = document.getElementById('header-container');
+  const footerContainer = document.getElementById('footer-container');
+  
+  if (headerContainer) headerContainer.innerHTML = window.Components.header;
+  if (footerContainer) footerContainer.innerHTML = window.Components.footer;
+
+  // Initialize features
+  initTheme();
+  initMobileMenu();
+  initScrollEffects();
+  initSearch();
+  initAnimations();
+  initCounters();
+  initChatbot();
+  
+  // Remove Loader once everything is ready
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('page-loader');
+      if(loader) loader.classList.add('hidden');
+    }, 500); // Small delay for aesthetic smooth reveal
+  });
+
+  // Page specific initializations
+  const path = window.location.pathname;
+  if (path.endsWith('index.html') || path === '/' || path.endsWith('ucmh-website/')) {
+    initHomePage();
+    initParallax();
+  } else if (path.includes('courses.html')) {
+    initCoursesPage();
+  } else if (path.includes('faculty.html') || path.includes('people.html')) {
+    initFacultyPage();
+  } else if (path.includes('feedback.html') || path.includes('contact.html')) {
+    initForms();
+  } else if (path.includes('gallery.html')) {
+    initGallery();
+  }
+
+  updateActiveNavLink();
+});
+
+// Toast Notification System
+window.showToast = function(message, type = 'success') {
+  const container = document.getElementById('toast-container');
+  if(!container) return;
+  
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  
+  const icon = type === 'success' 
+    ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>'
+    : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
+    
+  toast.innerHTML = icon + ' <span>' + message + '</span>';
+  container.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.animation = 'fadeOut 0.3s ease-out forwards';
+    setTimeout(() => toast.remove(), 300);
+  }, 4000);
+};
+
+function initParallax() {
+  const parallaxBg = document.querySelector('.parallax-bg');
+  if(!parallaxBg) return;
+  
+  window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    parallaxBg.style.transform = 'translateY(' + (scroll * 0.4) + 'px)';
+  });
+}
+
+function initCounters() {
+  const counters = document.querySelectorAll('.counter');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        const target = +entry.target.getAttribute('data-target');
+        let count = 0;
+        const speed = target / 50; 
+        
+        const updateCount = () => {
+          count += speed;
+          if(count < target) {
+            entry.target.innerText = Math.ceil(count);
+            requestAnimationFrame(updateCount);
+          } else {
+            entry.target.innerText = target;
+          }
+        };
+        updateCount();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  counters.forEach(c => observer.observe(c));
+}
+
+function initChatbot() {
+  const btn = document.getElementById('chatbot-btn');
+  const windowEl = document.getElementById('chatbot-window');
+  const closeBtn = document.getElementById('chatbot-close');
+  const sendBtn = document.getElementById('chat-send');
+  const input = document.getElementById('chat-text');
+  const body = document.getElementById('chat-body');
+  
+  if(!btn) return;
+  
+  btn.addEventListener('click', () => windowEl.classList.toggle('active'));
+  closeBtn.addEventListener('click', () => windowEl.classList.remove('active'));
+  
+  const handleSend = () => {
+    const val = input.value.trim();
+    if(!val) return;
+    
+    // add user msg
+    body.innerHTML += '<div class="chat-msg user">' + val + '</div>';
+    input.value = '';
+    body.scrollTop = body.scrollHeight;
+    
+    // simulate bot typing
+    setTimeout(() => {
+      body.innerHTML += '<div class="chat-msg bot">Thank you for your query. Our team will look into it. Please visit the contact page for immediate assistance.</div>';
+      body.scrollTop = body.scrollHeight;
+    }, 1000);
+  };
+  
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
+}
+
+function initTheme() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const moonIcon = document.getElementById('moon-icon');
+  const sunIcon = document.getElementById('sun-icon');
+  
+  if (!toggleBtn) return;
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    moonIcon.style.display = 'none';
+    sunIcon.style.display = 'block';
+  }
+  toggleBtn.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      moonIcon.style.display = 'block';
+      sunIcon.style.display = 'none';
+      if(window.showToast) window.showToast('Switched to Light Mode', 'success');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      moonIcon.style.display = 'none';
+      sunIcon.style.display = 'block';
+      if(window.showToast) window.showToast('Switched to Dark Mode', 'success');
+    }
+  });
+}
+
+function initMobileMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  if(hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+}
+
+function initScrollEffects() {
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      if(header) header.classList.add('scrolled');
+    } else {
+      if(header) header.classList.remove('scrolled');
+    }
+  });
+}
+
+function initSearch() {
+  const searchBtn = document.getElementById('search-btn');
+  const searchOverlay = document.getElementById('search-overlay');
+  const closeSearch = document.getElementById('close-search');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  
+  if(!searchBtn) return;
+
+  searchBtn.addEventListener('click', () => {
+    searchOverlay.classList.add('active');
+    setTimeout(() => searchInput.focus(), 100);
+  });
+
+  closeSearch.addEventListener('click', () => {
+    searchOverlay.classList.remove('active');
+    searchInput.value = '';
+    searchResults.style.display = 'none';
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    if(query.length < 2) {
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    const results = [];
+    if(window.siteData) {
+      if(window.siteData.pages) {
+        window.siteData.pages.forEach(p => {
+          if(p.title.toLowerCase().includes(query)) results.push({ type: 'Page', title: p.title, url: p.url });
+        });
+      }
+      if(window.siteData.courses) {
+        window.siteData.courses.forEach(c => {
+          if(c.title.toLowerCase().includes(query)) results.push({ type: 'Course', title: c.title, url: '/pages/courses.html' });
+        });
+      }
+    }
+
+    if(results.length > 0) {
+      searchResults.innerHTML = results.map(r => '<a href="' + r.url + '" style="display:block; padding: 1rem; border-bottom: 1px solid var(--border-color); color: inherit;"><small style="color: var(--primary); font-weight: bold;">' + r.type + '</small><div style="font-size: 1.1rem;">' + r.title + '</div></a>').join('');
+      searchResults.style.display = 'block';
+    } else {
+      searchResults.innerHTML = '<div style="padding: 1rem;">No results found.</div>';
+      searchResults.style.display = 'block';
+    }
+  });
+}
+
+function initAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('appear');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in, .scale-in').forEach(el => observer.observe(el));
+}
+
+function updateActiveNavLink() {
+  const path = window.location.pathname;
+  const links = document.querySelectorAll('.nav-links a');
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    if(path.endsWith(href) || (path.endsWith('/') && href === '/index.html')) {
+      link.classList.add('active');
+      link.style.color = 'var(--primary)';
+    }
+  });
+}
+
+function initHomePage() {
+  const newsContainer = document.getElementById('news-container');
+  if(newsContainer && window.siteData && window.siteData.news) {
+    newsContainer.innerHTML = window.siteData.news.slice(0, 3).map(item => '<div class="glass-card fade-in" style="padding: 1.5rem;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;"><span style="font-size: 0.8rem; font-weight: 600; color: var(--primary); background: rgba(37,99,235,0.1); padding: 0.2rem 0.6rem; border-radius: 1rem;">' + item.type + '</span><span style="font-size: 0.85rem; color: var(--text-muted);">' + item.date + '</span></div><h4 style="margin-bottom: 0.5rem;">' + item.title + '</h4><p style="font-size: 0.95rem; margin-bottom: 0;">' + item.excerpt + '</p></div>').join('');
+  }
+}
+
+function initCoursesPage() {
+  const container = document.getElementById('courses-grid');
+  if(!container || !window.siteData || !window.siteData.courses) return;
+
+  container.innerHTML = window.siteData.courses.map(course => '<div class="glass-card scale-in" style="padding: 2rem; display:flex; flex-direction:column; align-items: flex-start;"><div style="width: 50px; height: 50px; border-radius: 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); display:flex; justify-content:center; align-items:center; color:white; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><h3 style="font-size: 1.25rem;">' + course.title + '</h3><p style="font-size: 0.95rem; flex-grow: 1;">' + course.desc + '</p><div style="width: 100%; border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600;"><span>' + course.duration + '</span><span style="color: var(--primary);">' + course.intake + '</span></div></div>').join('');
+}
+
+function initFacultyPage() {
+  const container = document.getElementById('faculty-grid');
+  if(!container || !window.siteData || !window.siteData.faculty) return;
+
+  container.innerHTML = window.siteData.faculty.map(fac => '<div class="glass-card fade-in text-center" style="padding: 2.5rem 1.5rem;"><div class="img-wrap" style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; border: 4px solid var(--border-color); box-shadow: var(--shadow-md);"><img src="' + fac.img + '" alt="' + fac.name + '"></div><h3 style="margin-bottom: 0.25rem;">' + fac.name + '</h3><p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">' + fac.role + '</p><p style="font-size:0.9rem;">' + fac.dept + '</p></div>').join('');
+}
+
+function initForms() {
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const btn = form.querySelector('button[type="submit"]');
+      if(!btn) return;
+      
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="loader-spinner" style="width:20px; height:20px; border-width:2px; display:inline-block;"></span> Sending...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        if(window.showToast) window.showToast('Message sent successfully!', 'success');
+        form.reset();
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 1500);
+    });
+  });
+}
+
+function initGallery() {
+  const images = document.querySelectorAll('.masonry-item img');
+  if(images.length === 0) return;
+  
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  lightbox.innerHTML = '<div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; display:flex; justify-content:center; align-items:center; opacity:0; visibility:hidden; transition:var(--transition);"><img src="" style="max-width:90%; max-height:90vh; border-radius:0.5rem; box-shadow:0 0 30px rgba(0,0,0,0.5); transform:scale(0.9); transition:transform 0.3s;"/><button style="position:absolute; top:2rem; right:2rem; background:none; border:none; color:white; font-size:2rem; cursor:pointer;">✕</button></div>';
+  document.body.appendChild(lightbox);
+  
+  const lbDiv = lightbox.firstElementChild;
+  const lbImg = lbDiv.querySelector('img');
+  const lbClose = lbDiv.querySelector('button');
+  
+  images.forEach(img => {
+    img.parentElement.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lbDiv.style.opacity = '1';
+      lbDiv.style.visibility = 'visible';
+      setTimeout(() => lbImg.style.transform = 'scale(1)', 50);
+    });
+  });
+  
+  lbClose.addEventListener('click', () => {
+    lbDiv.style.opacity = '0';
+    lbDiv.style.visibility = 'hidden';
+    lbImg.style.transform = 'scale(0.9)';
+  });
+}
