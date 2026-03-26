@@ -1,1 +1,0 @@
-This folder contains local assets (images, icons). In the current iteration, optimized CDN images from Unsplash and UI-Avatars are used to guarantee maximum performance, portability, and beautiful dummy data without inflating the project size.
